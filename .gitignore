@@ -3,6 +3,7 @@
 /ModelsOld/*
 /ModelComps/*
 datagen.sh.*
+modelgen.sh.*
  __pycache__/
  *.pyc
  /notebooks/core*
