@@ -12,17 +12,12 @@ from save_load_data import load_fast
 from save_load_model import get_nn_tag, fast_load_nn
 from save_load_comps import save_comps
 
-from torch import Tensor
-
-from scipy.interpolate import RBFInterpolator
-
 from Functions import get_func
 
 import jax.random as jrandom
 import numpy as np
 
-import torch
-from torch import Tensor
+from GModel import GModel
 
 if "PBS_ARRAY_INDEX" in os.environ:
     ARRAY_INDEX = int(os.environ["PBS_ARRAY_INDEX"]) - 1
@@ -30,6 +25,8 @@ if "PBS_ARRAY_INDEX" in os.environ:
 else:
     ARRAY_INDEX = 10
     TOTAL_ARRAY = 210
+
+
 
 def normalize(X_data, y_data, X_test, y_test):
     x_max, x_min = np.max(X_data), np.min(X_data)
@@ -134,6 +131,14 @@ def nn_loss(func_name, dim, N, data_gen_method, X_train, y_train, X_test, y_test
                             nn_num += 1
 
     return res
+
+class LearntModel():
+
+    def __init__(self, X_train, y_train, tag):
+        self.X_train = X_train
+        self.y_train = y_train
+
+        
 
 
 if __name__ == "__main__":

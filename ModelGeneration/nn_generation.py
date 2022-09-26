@@ -19,6 +19,10 @@ else:
     ARRAY_INDEX = 593
     TOTAL_ARRAY = 594
 
+
+import tracemalloc
+
+
 def normalize(X_data, y_data):
     x_max, x_min = np.max(X_data), np.min(X_data)
     y_max, y_min = np.max(y_data), np.min(y_data)
@@ -26,8 +30,6 @@ def normalize(X_data, y_data):
     y_data = (y_data - (y_max + y_min)/2.) * 5. / ((y_max - y_min)/2.)
 
     return X_data, y_data
-
-
 
 
 def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
@@ -54,9 +56,10 @@ def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
         for optimizer in optimizers:
             for batch_size in batch_sizes:
                 # How often will i see each elem is the number of epochs
-                num_epochs = int((num_steps * batch_size)/N)
-                num_epochs = 1#max(num_epochs, 10) # want to see every data point at least 5-times
-                # num_epochs = min(num_epochs, 200) # no more than 200 epochs
+                num_epochs = (num_steps * batch_size)/N
+                num_epochs = max(num_epochs, 10) # want to see every data point at least 5-times
+                num_epochs = min(num_epochs, 1e3) # no more than 1k epochs
+                num_epochs = int(num_epochs)
                 for lr in optimizers[optimizer]["lr"]:
                     for momentum in optimizers[optimizer]["momentum"]:
                         for weight_decay in weight_decays:
@@ -68,9 +71,10 @@ def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
                                 print(width)
                                 print(lr)
                                 print(num_epochs)
+                                print(batch_size)
                                 
                                 nn, loss_hist = train(dim, None, X_train, y_train, num_epochs, eps, width, depth, optimizer, lr, batch_size, weight_decay, momentum, verbose=False)
-                                # save_nn(nn, loss_hist, func_name, dim, N, data_gen_name, depth, width, optimizer, lr, batch_size, weight_decay, momentum)
+                                save_nn(nn, loss_hist, func_name, dim, N, data_gen_name, depth, width, optimizer, lr, batch_size, weight_decay, momentum)
                             nn_num += 1
 
 
@@ -81,6 +85,36 @@ def load_and_call(func, dim, N, data_gen_method):
     generate_nns(X_data, y_data, func, dim, N, data_gen_method)
 
 if __name__ == "__main__":
+    from collections import Counter
+    import linecache
+    import os
+    import tracemalloc
+    def display_top(snapshot, key_type='lineno', limit=3):
+        snapshot = snapshot.filter_traces((
+            tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
+            tracemalloc.Filter(False, "<unknown>"),
+        ))
+        top_stats = snapshot.statistics(key_type)
+
+        print("Top %s lines" % limit)
+        for index, stat in enumerate(top_stats[:limit], 1):
+            frame = stat.traceback[0]
+            # replace "/path/to/module/file.py" with "module/file.py"
+            filename = os.sep.join(frame.filename.split(os.sep)[-2:])
+            print("#%s: %s:%s: %.1f KiB"
+                % (index, filename, frame.lineno, stat.size / 1024))
+            line = linecache.getline(frame.filename, frame.lineno).strip()
+            if line:
+                print('    %s' % line)
+
+        other = top_stats[limit:]
+        if other:
+            size = sum(stat.size for stat in other)
+            print("%s other: %.1f KiB" % (len(other), size / 1024))
+        total = sum(stat.size for stat in top_stats)
+        print("Total allocated size: %.1f KiB" % (total / 1024))
+        
+    # tracemalloc.start()
 
     curr_exp_n = 0
 
@@ -96,6 +130,8 @@ if __name__ == "__main__":
         print("Exp N", curr_exp_n)
         # if (curr_exp_n % TOTAL_ARRAY) == ARRAY_INDEX:
         #     print("Generating...")
+        # snapshot = tracemalloc.take_snapshot()
+        # display_top(snapshot)
         
         # print()
         curr_exp_n += 1

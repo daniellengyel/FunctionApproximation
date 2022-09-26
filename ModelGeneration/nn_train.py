@@ -52,15 +52,14 @@ def train(inp_dim, net, X_train, y_train, num_epochs, eps, width, num_layers, op
             loss = criterion(outputs, y_train)
             loss.backward(retain_graph=True)
             optimizer.step()
-            avg_loss += loss
+            avg_loss += float(loss)
             num_loss += 1
 
         avg_loss = avg_loss/num_loss
-        loss_res.append(avg_loss)
+        loss_res.append(float(avg_loss))
         if avg_loss < eps:
             break
 
         # scheduler.step(avg_loss)
         # print(scheduler.optimizer.param_groups[0]['lr'])
-    print(loss_res)
     return net, loss_res
