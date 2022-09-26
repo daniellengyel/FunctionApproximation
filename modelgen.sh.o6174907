@@ -1,0 +1,1435 @@
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.9417, grad_fn=<DivBackward0>)]
+Exp N 0
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.6013, grad_fn=<DivBackward0>)]
+Exp N 1
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.0517, grad_fn=<DivBackward0>)]
+Exp N 2
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4661, grad_fn=<DivBackward0>)]
+Exp N 3
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4710, grad_fn=<DivBackward0>)]
+Exp N 4
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4787, grad_fn=<DivBackward0>)]
+Exp N 5
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.0244, grad_fn=<DivBackward0>)]
+Exp N 6
+NN num 593
+8
+64
+1e-05
+1
+[tensor(5.8127, grad_fn=<DivBackward0>)]
+Exp N 7
+NN num 593
+8
+64
+1e-05
+1
+[tensor(5.9388, grad_fn=<DivBackward0>)]
+Exp N 8
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.0825, grad_fn=<DivBackward0>)]
+Exp N 9
+NN num 593
+8
+64
+1e-05
+1
+[tensor(5.4301, grad_fn=<DivBackward0>)]
+Exp N 10
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.2980, grad_fn=<DivBackward0>)]
+Exp N 11
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.9087, grad_fn=<DivBackward0>)]
+Exp N 12
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.6099, grad_fn=<DivBackward0>)]
+Exp N 13
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4163, grad_fn=<DivBackward0>)]
+Exp N 14
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.1384, grad_fn=<DivBackward0>)]
+Exp N 15
+NN num 593
+8
+64
+1e-05
+1
+[tensor(20.6732, grad_fn=<DivBackward0>)]
+Exp N 16
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.9279, grad_fn=<DivBackward0>)]
+Exp N 17
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.9360, grad_fn=<DivBackward0>)]
+Exp N 18
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.2478, grad_fn=<DivBackward0>)]
+Exp N 19
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.2717, grad_fn=<DivBackward0>)]
+Exp N 20
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.5998, grad_fn=<DivBackward0>)]
+Exp N 21
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.3325, grad_fn=<DivBackward0>)]
+Exp N 22
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.0255, grad_fn=<DivBackward0>)]
+Exp N 23
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.9450, grad_fn=<DivBackward0>)]
+Exp N 24
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.5970, grad_fn=<DivBackward0>)]
+Exp N 25
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.0725, grad_fn=<DivBackward0>)]
+Exp N 26
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.3818, grad_fn=<DivBackward0>)]
+Exp N 27
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.7844, grad_fn=<DivBackward0>)]
+Exp N 28
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.8462, grad_fn=<DivBackward0>)]
+Exp N 29
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.4311, grad_fn=<DivBackward0>)]
+Exp N 30
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.0670, grad_fn=<DivBackward0>)]
+Exp N 31
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.1514, grad_fn=<DivBackward0>)]
+Exp N 32
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.9697, grad_fn=<DivBackward0>)]
+Exp N 33
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.2309, grad_fn=<DivBackward0>)]
+Exp N 34
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.4356, grad_fn=<DivBackward0>)]
+Exp N 35
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.4223, grad_fn=<DivBackward0>)]
+Exp N 36
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.1677, grad_fn=<DivBackward0>)]
+Exp N 37
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.3770, grad_fn=<DivBackward0>)]
+Exp N 38
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.0867, grad_fn=<DivBackward0>)]
+Exp N 39
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.5452, grad_fn=<DivBackward0>)]
+Exp N 40
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.6247, grad_fn=<DivBackward0>)]
+Exp N 41
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.2779, grad_fn=<DivBackward0>)]
+Exp N 42
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.5570, grad_fn=<DivBackward0>)]
+Exp N 43
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.8527, grad_fn=<DivBackward0>)]
+Exp N 44
+NN num 593
+8
+64
+1e-05
+1
+[tensor(20.5569, grad_fn=<DivBackward0>)]
+Exp N 45
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.9083, grad_fn=<DivBackward0>)]
+Exp N 46
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.9530, grad_fn=<DivBackward0>)]
+Exp N 47
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.5744, grad_fn=<DivBackward0>)]
+Exp N 48
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.1019, grad_fn=<DivBackward0>)]
+Exp N 49
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.1303, grad_fn=<DivBackward0>)]
+Exp N 50
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.3642, grad_fn=<DivBackward0>)]
+Exp N 51
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.6863, grad_fn=<DivBackward0>)]
+Exp N 52
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.4230, grad_fn=<DivBackward0>)]
+Exp N 53
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.7132, grad_fn=<DivBackward0>)]
+Exp N 54
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.9614, grad_fn=<DivBackward0>)]
+Exp N 55
+NN num 593
+8
+64
+1e-05
+1
+[tensor(13.2301, grad_fn=<DivBackward0>)]
+Exp N 56
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.9732, grad_fn=<DivBackward0>)]
+Exp N 57
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.6412, grad_fn=<DivBackward0>)]
+Exp N 58
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.5087, grad_fn=<DivBackward0>)]
+Exp N 59
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.1126, grad_fn=<DivBackward0>)]
+Exp N 60
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.0814, grad_fn=<DivBackward0>)]
+Exp N 61
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.3277, grad_fn=<DivBackward0>)]
+Exp N 62
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.6770, grad_fn=<DivBackward0>)]
+Exp N 63
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.1751, grad_fn=<DivBackward0>)]
+Exp N 64
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.2710, grad_fn=<DivBackward0>)]
+Exp N 65
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.6109, grad_fn=<DivBackward0>)]
+Exp N 66
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.4157, grad_fn=<DivBackward0>)]
+Exp N 67
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.7766, grad_fn=<DivBackward0>)]
+Exp N 68
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.4881, grad_fn=<DivBackward0>)]
+Exp N 69
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.7594, grad_fn=<DivBackward0>)]
+Exp N 70
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.0280, grad_fn=<DivBackward0>)]
+Exp N 71
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.8605, grad_fn=<DivBackward0>)]
+Exp N 72
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.2354, grad_fn=<DivBackward0>)]
+Exp N 73
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.9866, grad_fn=<DivBackward0>)]
+Exp N 74
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 75
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.6211, grad_fn=<DivBackward0>)]
+Exp N 76
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.4962, grad_fn=<DivBackward0>)]
+Exp N 77
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.1170, grad_fn=<DivBackward0>)]
+Exp N 78
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.0735, grad_fn=<DivBackward0>)]
+Exp N 79
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.7782, grad_fn=<DivBackward0>)]
+Exp N 80
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.7462, grad_fn=<DivBackward0>)]
+Exp N 81
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.8218, grad_fn=<DivBackward0>)]
+Exp N 82
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.1484, grad_fn=<DivBackward0>)]
+Exp N 83
+NN num 593
+8
+64
+1e-05
+1
+[tensor(23.3679, grad_fn=<DivBackward0>)]
+Exp N 84
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.1533, grad_fn=<DivBackward0>)]
+Exp N 85
+NN num 593
+8
+64
+1e-05
+1
+[tensor(4.5987, grad_fn=<DivBackward0>)]
+Exp N 86
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.1991, grad_fn=<DivBackward0>)]
+Exp N 87
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.0767, grad_fn=<DivBackward0>)]
+Exp N 88
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.1234, grad_fn=<DivBackward0>)]
+Exp N 89
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.6773, grad_fn=<DivBackward0>)]
+Exp N 90
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.8444, grad_fn=<DivBackward0>)]
+Exp N 91
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.4614, grad_fn=<DivBackward0>)]
+Exp N 92
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.9774, grad_fn=<DivBackward0>)]
+Exp N 93
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.9233, grad_fn=<DivBackward0>)]
+Exp N 94
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.0219, grad_fn=<DivBackward0>)]
+Exp N 95
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.4189, grad_fn=<DivBackward0>)]
+Exp N 96
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.5935, grad_fn=<DivBackward0>)]
+Exp N 97
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.2223, grad_fn=<DivBackward0>)]
+Exp N 98
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.1771, grad_fn=<DivBackward0>)]
+Exp N 99
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.7025, grad_fn=<DivBackward0>)]
+Exp N 100
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.5338, grad_fn=<DivBackward0>)]
+Exp N 101
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.6996, grad_fn=<DivBackward0>)]
+Exp N 102
+NN num 593
+8
+64
+1e-05
+1
+[tensor(13.7484, grad_fn=<DivBackward0>)]
+Exp N 103
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.7561, grad_fn=<DivBackward0>)]
+Exp N 104
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 105
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.9330, grad_fn=<DivBackward0>)]
+Exp N 106
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.7707, grad_fn=<DivBackward0>)]
+Exp N 107
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.2928, grad_fn=<DivBackward0>)]
+Exp N 108
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.5274, grad_fn=<DivBackward0>)]
+Exp N 109
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.8542, grad_fn=<DivBackward0>)]
+Exp N 110
+NN num 593
+8
+64
+1e-05
+1
+[tensor(20.6145, grad_fn=<DivBackward0>)]
+Exp N 111
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.8963, grad_fn=<DivBackward0>)]
+Exp N 112
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.6883, grad_fn=<DivBackward0>)]
+Exp N 113
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.4754, grad_fn=<DivBackward0>)]
+Exp N 114
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.8469, grad_fn=<DivBackward0>)]
+Exp N 115
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.0757, grad_fn=<DivBackward0>)]
+Exp N 116
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.3797, grad_fn=<DivBackward0>)]
+Exp N 117
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.5664, grad_fn=<DivBackward0>)]
+Exp N 118
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.7038, grad_fn=<DivBackward0>)]
+Exp N 119
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.3432, grad_fn=<DivBackward0>)]
+Exp N 120
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.0001, grad_fn=<DivBackward0>)]
+Exp N 121
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.3763, grad_fn=<DivBackward0>)]
+Exp N 122
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.1521, grad_fn=<DivBackward0>)]
+Exp N 123
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.6952, grad_fn=<DivBackward0>)]
+Exp N 124
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.8437, grad_fn=<DivBackward0>)]
+Exp N 125
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.4327, grad_fn=<DivBackward0>)]
+Exp N 126
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.4854, grad_fn=<DivBackward0>)]
+Exp N 127
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.1207, grad_fn=<DivBackward0>)]
+Exp N 128
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.0916, grad_fn=<DivBackward0>)]
+Exp N 129
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.0385, grad_fn=<DivBackward0>)]
+Exp N 130
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.9040, grad_fn=<DivBackward0>)]
+Exp N 131
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.5441, grad_fn=<DivBackward0>)]
+Exp N 132
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.3562, grad_fn=<DivBackward0>)]
+Exp N 133
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.1728, grad_fn=<DivBackward0>)]
+Exp N 134
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.9534, grad_fn=<DivBackward0>)]
+Exp N 135
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.7864, grad_fn=<DivBackward0>)]
+Exp N 136
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.5751, grad_fn=<DivBackward0>)]
+Exp N 137
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.9605, grad_fn=<DivBackward0>)]
+Exp N 138
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.9093, grad_fn=<DivBackward0>)]
+Exp N 139
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.5791, grad_fn=<DivBackward0>)]
+Exp N 140
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.6129, grad_fn=<DivBackward0>)]
+Exp N 141
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.2041, grad_fn=<DivBackward0>)]
+Exp N 142
+NN num 593
+8
+64
+1e-05
+1
+[tensor(13.7623, grad_fn=<DivBackward0>)]
+Exp N 143
+NN num 593
+8
+64
+1e-05
+1
+[tensor(21.5963, grad_fn=<DivBackward0>)]
+Exp N 144
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.5701, grad_fn=<DivBackward0>)]
+Exp N 145
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.8354, grad_fn=<DivBackward0>)]
+Exp N 146
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.4511, grad_fn=<DivBackward0>)]
+Exp N 147
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.8998, grad_fn=<DivBackward0>)]
+Exp N 148
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.5569, grad_fn=<DivBackward0>)]
+Exp N 149
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.7029, grad_fn=<DivBackward0>)]
+Exp N 150
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.6670, grad_fn=<DivBackward0>)]
+Exp N 151
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.3446, grad_fn=<DivBackward0>)]
+Exp N 152
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.8985, grad_fn=<DivBackward0>)]
+Exp N 153
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.0724, grad_fn=<DivBackward0>)]
+Exp N 154
+NN num 593
+8
+64
+1e-05
+1
+[tensor(5.1786, grad_fn=<DivBackward0>)]
+Exp N 155
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.9127, grad_fn=<DivBackward0>)]
+Exp N 156
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.0902, grad_fn=<DivBackward0>)]
+Exp N 157
+NN num 593
+8
+64
+1e-05
+1
+[tensor(4.9660, grad_fn=<DivBackward0>)]
+Exp N 158
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4775, grad_fn=<DivBackward0>)]
+Exp N 159
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.3572, grad_fn=<DivBackward0>)]
+Exp N 160
+NN num 593
+8
+64
+1e-05
+1
+[tensor(5.6505, grad_fn=<DivBackward0>)]
+Exp N 161
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.4857, grad_fn=<DivBackward0>)]
+Exp N 162
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.6838, grad_fn=<DivBackward0>)]
+Exp N 163
+NN num 593
+8
+64
+1e-05
+1
+[tensor(4.7467, grad_fn=<DivBackward0>)]
+Exp N 164
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 165
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 166
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 167
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 168
+NN num 593
+8
+64
+1e-05
+1
+[tensor(nan, grad_fn=<DivBackward0>)]
+Exp N 169
+NN num 593
+8
+64
+1e-05
+1
+[tensor(10.9200, grad_fn=<DivBackward0>)]
+Exp N 170
+NN num 593
+8
+64
+1e-05
+1
+[tensor(13.2611, grad_fn=<DivBackward0>)]
+Exp N 171
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.7807, grad_fn=<DivBackward0>)]
+Exp N 172
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.3545, grad_fn=<DivBackward0>)]
+Exp N 173
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.6441, grad_fn=<DivBackward0>)]
+Exp N 174
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.1574, grad_fn=<DivBackward0>)]
+Exp N 175
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.9147, grad_fn=<DivBackward0>)]
+Exp N 176
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.2274, grad_fn=<DivBackward0>)]
+Exp N 177
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.1789, grad_fn=<DivBackward0>)]
+Exp N 178
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.0899, grad_fn=<DivBackward0>)]
+Exp N 179
+NN num 593
+8
+64
+1e-05
+1
+[tensor(14.3583, grad_fn=<DivBackward0>)]
+Exp N 180
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4056, grad_fn=<DivBackward0>)]
+Exp N 181
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.4800, grad_fn=<DivBackward0>)]
+Exp N 182
+NN num 593
+8
+64
+1e-05
+1
+[tensor(11.9112, grad_fn=<DivBackward0>)]
+Exp N 183
+NN num 593
+8
+64
+1e-05
+1
+[tensor(6.4883, grad_fn=<DivBackward0>)]
+Exp N 184
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.2733, grad_fn=<DivBackward0>)]
+Exp N 185
+NN num 593
+8
+64
+1e-05
+1
+[tensor(21.3980, grad_fn=<DivBackward0>)]
+Exp N 186
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.6821, grad_fn=<DivBackward0>)]
+Exp N 187
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.1584, grad_fn=<DivBackward0>)]
+Exp N 188
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.4556, grad_fn=<DivBackward0>)]
+Exp N 189
+NN num 593
+8
+64
+1e-05
+1
+[tensor(13.1720, grad_fn=<DivBackward0>)]
+Exp N 190
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.1576, grad_fn=<DivBackward0>)]
+Exp N 191
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.5833, grad_fn=<DivBackward0>)]
+Exp N 192
+NN num 593
+8
+64
+1e-05
+1
+[tensor(13.8503, grad_fn=<DivBackward0>)]
+Exp N 193
+NN num 593
+8
+64
+1e-05
+1
+[tensor(18.7330, grad_fn=<DivBackward0>)]
+Exp N 194
+NN num 593
+8
+64
+1e-05
+1
+[tensor(19.0553, grad_fn=<DivBackward0>)]
+Exp N 195
+NN num 593
+8
+64
+1e-05
+1
+[tensor(15.2707, grad_fn=<DivBackward0>)]
+Exp N 196
+NN num 593
+8
+64
+1e-05
+1
+[tensor(17.8132, grad_fn=<DivBackward0>)]
+Exp N 197
+NN num 593
+8
+64
+1e-05
+1
+[tensor(16.9962, grad_fn=<DivBackward0>)]
+Exp N 198
+NN num 593
+8
+64
+1e-05
+1
+[tensor(12.5961, grad_fn=<DivBackward0>)]
+Exp N 199
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.0738, grad_fn=<DivBackward0>)]
+Exp N 200
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.1218, grad_fn=<DivBackward0>)]
+Exp N 201
+NN num 593
+8
+64
+1e-05
+1
+[tensor(7.3790, grad_fn=<DivBackward0>)]
+Exp N 202
+NN num 593
+8
+64
+1e-05
+1
+[tensor(9.5280, grad_fn=<DivBackward0>)]
+Exp N 203
+NN num 593
+8
+64
+1e-05
+1
+[tensor(8.3535, grad_fn=<DivBackward0>)]
+Exp N 204

@@ -1,0 +1,8 @@
+/Dataset/*
+/Models/*
+/ModelsOld/*
+/ModelComps/*
+datagen.sh.*
+ __pycache__/
+ *.pyc
+ /notebooks/core*

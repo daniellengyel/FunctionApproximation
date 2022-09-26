@@ -1,0 +1,30 @@
+{        
+
+    "Ackley": {
+        "num_steps": 100,
+        "sig":  [5e-2, 5e-2, 5e-2, 5e-2, 5e-2, 5e-2],
+        "eta": 1,
+        "seed": 0,
+        "eps_barrier": 5,
+        "curv_scaling": [1e-3, 1e-3, 1e-3, 1e-3, 5e-3]
+    },
+
+
+    "Michi": {
+        "num_steps": 100,
+        "sig": [1e-3, 1e-3, 1e-3, 1e-3, 1e-3],
+        "eta": 1,
+        "seed": 0,
+        "eps_barrier": 5,
+        "curv_scaling": [1e-3, 1e-3, 5e-4, 5e-5, 5e-5] 
+    },
+
+    "Rosenbrock": {
+        "num_steps": 100,
+        "sig": 0.1,
+        "eta": 1,
+        "seed": 0,
+        "eps_barrier": 5,
+        "curv_scaling": 1e-5
+    }
+}
