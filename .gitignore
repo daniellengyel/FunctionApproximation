@@ -2,6 +2,7 @@
 /Models/*
 /ModelsOld/*
 /ModelComps/*
+/ICLR_stuff/*
 datagen.sh.*
 modelgen.sh.*
  __pycache__/

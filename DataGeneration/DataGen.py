@@ -14,43 +14,47 @@ os.environ["PATH_INTP_FOLDER"] = HOME
 sys.path.append(HOME + "/")
 sys.path.append(HOME + "/DataGeneration")
 sys.path.append(HOME + "/DataGeneration/CurvSampling")
+sys.path.append(HOME + "/DataGeneration/Mesh_simplification")
+
 from Functions import get_func
 from UniformData import get_uniform_grid, get_uniform_random
 from CurvSampling import sample_curv
-from save_load_data import save_reparam_curv, save_sampling_hess, save_simplify_mesh, save_uniform_grid, save_uniform_sampling
+from save_load_data import save_curv_reparam, save_sampling_hess, save_mesh_simplification, save_uniform_grid, save_uniform_sampling
+from QuadricsMeshSimplifcation import get_quadrics_points
+from CurvatureReparam import get_curvature_reparam
 
 if "PBS_ARRAY_INDEX" in os.environ:
     ARRAY_INDEX = int(os.environ["PBS_ARRAY_INDEX"]) - 1
 else:
-    ARRAY_INDEX = 0 
+    ARRAY_INDEX = 2
+
+def generate_all_data_confs(funcs, dims, Ns_per_dim):
+    res = []
+    for f in funcs:
+        for d in dims:
+            for N in Ns_per_dim:
+                res.append({"func_name": f, "dim": d, "N": N**d})
+    return res
 
 
 """Input for all should be just the function and N i think """
 
-def get_uniform(funcs, dims, Ns, seed, verbose=True):
-    for f in funcs:
-        if verbose:
-            print("f", f)
+def get_uniform(all_data_confs, seed, verbose=True):
+
+    for data_conf in all_data_confs:
+        print(data_conf)  
+        f = data_conf["func_name"]     
         F = get_func(f)
+        N = int(data_conf["N"])
+        dim = int(data_conf["dim"])
+        data_x_grid = get_uniform_grid(F, N, dim, seed)
+        data_y_grid = F.f(data_x_grid)
+        data_x_random = get_uniform_random(F, N, dim, seed)
+        data_y_random = F.f(data_x_random)
 
-        for dim in dims:
-            if ((dim % 2) == 1) and (f == "Rosenbrock"):
-                continue
-            if verbose:
-                print("dim", dim)
-            for N in Ns:
-                N = int(N)
-                dim = int(dim)
-                data_x_grid = get_uniform_grid(F, N, dim, seed)
-                data_y_grid = F.f(data_x_grid)
-                data_x_random = get_uniform_random(F, N, dim, seed)
-                data_y_random = F.f(data_x_random)
-
-                save_uniform_sampling(data_x_random, data_y_random, f, dim, N, seed)
-                save_uniform_grid(data_x_grid, data_y_grid, f, dim, N, seed)
-
+        save_uniform_sampling(data_x_random, data_y_random, f, dim, N, seed)
+        save_uniform_grid(data_x_grid, data_y_grid, f, dim, N, seed)
         
-
 
 def get_hess_sampling(funcs, dims, Ns, verbose=True):
     with open(HOME + "/DataGeneration/CurvSampling/configs.json", "r") as f:
@@ -80,25 +84,44 @@ def get_hess_sampling(funcs, dims, Ns, verbose=True):
                 save_sampling_hess(xs, ys, f, dim, N, config)
     
 
-def get_mesh_simplification():
-    pass
+def get_mesh_simplification(data_confs, N_high=500**2, threshold=0.1, verbose=True):
+    for data_conf in data_confs:
+        if data_conf["dim"] == 1:
+            continue
+        print(data_conf)  
 
-def get_curv_reparam():
-    pass
+        F = get_func(data_conf["func_name"])
+        X_data = get_quadrics_points(F, N_high, data_conf["N"], threshold)
+        y_data = F.f(X_data)
+        save_mesh_simplification(X_data, y_data, data_conf["func_name"], data_conf["N"], config={"N_high": N_high, "threshold": threshold})
 
+def get_save_curv_reparam(data_confs, N_high=500, verbose=True):
+    for data_conf in data_confs:
+        if data_conf["dim"] == 2:
+            continue
+
+        F = get_func(data_conf["func_name"])
+        X_data = get_curvature_reparam(F, N_high, data_conf["N"])
+        y_data = F.f(X_data)
+        save_curv_reparam(X_data, y_data, data_conf["func_name"], data_conf["N"], config={"N_high": N_high})
 
 
 
 if __name__ == "__main__":
-    funcs = ["Ackley", "Michi", "Rosenbrock"]
-    dims = [1, 2, 3, 4, 6] #, 10]
-    Ns = [10, 1e2, 1e3, 1e4, 1e5] # , 1e6]
+    funcs = ["Ackley", "Michi", "Dixon"]
+    dims = [1, 2]
+    Ns_per_dim = [5, 10, 25, 50, 100, 250] # per dim
+
+    all_data_confs = generate_all_data_confs(funcs, dims, Ns_per_dim)
 
     if ARRAY_INDEX == 0:    
-        get_uniform(funcs, dims, Ns, seed=0)
+        get_uniform(all_data_confs, seed=0)
 
-    if ARRAY_INDEX > 0:
-        get_hess_sampling(funcs, dims, [Ns[ARRAY_INDEX - 1]])
+    elif ARRAY_INDEX == 1:
+        get_save_curv_reparam(all_data_confs, N_high=500, verbose=True)
+
+    elif ARRAY_INDEX == 2:
+        get_mesh_simplification(all_data_confs, N_high=500**2, threshold=0.1, verbose=True)
 
 
 

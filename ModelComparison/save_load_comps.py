@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 HOME = Path(os.environ["PATH_INTP_FOLDER"])
 
+from save_load_data import load_fast, get_all_data_configurations
+
 from pathlib import Path
 
 def save_comps(comps, N_test, seed_test, dim, N, func, data_gen_method):
@@ -76,9 +78,11 @@ def load_all_comps():
     all_data_confs = get_all_data_configurations()
 
     for data_conf in all_data_confs:
-        func = data_conf["func"]
+        func = data_conf["func_name"]
         dim = data_conf["dim"]
+        dim_dir = "dim_{}".format(int(dim))
         N = data_conf["N"]
+        N_dir = "N_{}".format(int(N))
         data_gen_method = data_conf["data_gen_method"]
         if not os.path.isdir(str(path / func / dim_dir / N_dir / data_gen_method)):
             continue

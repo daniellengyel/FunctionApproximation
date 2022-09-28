@@ -120,6 +120,7 @@ def get_full_plane_along_uv(F, u, v, N):
     
 def get_constrained_plane_along_uv(F, u, v, N):
     """Plane goes through the center of the cube"""
+    dim = len(u)
     bounds = F.bounds
     if len(bounds) != u.shape[0]:
         bounds = np.array([bounds[0] for _ in range(u.shape[0])])
@@ -156,33 +157,33 @@ def get_constrained_plane_along_uv(F, u, v, N):
             
     filtered_ts = np.array([t1[good_ts], t2[good_ts]]).T
 
-    ps = consts*(filtered_ts @ np.array(res[0][0])) + c
+    pts = consts*(filtered_ts @ np.array(res[0][0])) + c
     
     prmtrztn = np.array([consts[res[0][1][0]] * np.linalg.norm(res[0][0][0]) * filtered_ts[:, 0],
                          consts[res[0][1][1]] * np.linalg.norm(res[0][0][1]) * filtered_ts[:, 1]])
     
-    return prmtrztn, ps
+    return prmtrztn, np.array(pts)
 
     
 def get_line_along_v(F, v, N):
     """Goes through the center of the cube"""
-    v = v / jnp.linalg.norm(v)
-    c = jnp.mean(F.bounds, axis=1)
+    v = v / np.linalg.norm(v)
+    c = np.mean(F.bounds, axis=1)
     # when does t*v + c cross boundary. 
     # bounds[:, 0] \leq c + t v \leq bounds[:, 1]
     # ts_low \leq t \leq ts_high. with ts_low \leq 0 and ts_high \geq 0. 
     # hence, of all negatives we need the largetst and all positives the smallest. 
     # because c is the center, we have t_low = -t_high
-    
+
     t0s =  (F.bounds[:, 0] - c)/v
     t1s =  (F.bounds[:, 1] - c)/v
-    t_idx = jnp.argmin(jnp.abs(t0s))
+    t_idx = np.argmin(np.abs(t0s))
     
     t0 = t0s[t_idx]
     t1 = t1s[t_idx]
     
-    xs = (c + t0 * v) + jnp.linspace(0, 1, N).reshape(-1, 1) * (c + t1 * v - (c + t0 * v))
-    return xs
+    xs = (c + t0 * v) + np.linspace(0, 1, N).reshape(-1, 1) * (c + t1 * v - (c + t0 * v))
+    return np.array(xs)
 
 
 def test_helper():
@@ -219,4 +220,4 @@ def test_helper():
         )
     ])
 
-fig.show()
+    fig.show()
