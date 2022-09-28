@@ -28,7 +28,7 @@ def get_quadrics_points(F, N_init, N_final, threshold_prct=0.1):
     else:
         y_l, y_u = F.bounds[1]
 
-    threshold = (x_u - x_l) * threshold_prct # threshold_prct is the percentage of x_u - x_l we are willing to merge.  
+    threshold = (x_u - x_l)/2. * threshold_prct # threshold_prct is the percentage of x_u - x_l we are willing to merge.  
 
     x = np.linspace(x_l, x_u, int(N_init**(1/2.)))
     y = np.linspace(y_l, y_u, int(N_init**(1/2.)))

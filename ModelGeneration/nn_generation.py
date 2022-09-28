@@ -14,10 +14,10 @@ from save_load_model import save_nn, get_nn_tag, get_all_net_tags
 
 if "PBS_ARRAY_INDEX" in os.environ:
     ARRAY_INDEX = int(os.environ["PBS_ARRAY_INDEX"]) - 1
-    TOTAL_ARRAY = 594
+    TOTAL_ARRAY = 384
 else:
-    ARRAY_INDEX = 593
-    TOTAL_ARRAY = 594
+    ARRAY_INDEX = 384
+    TOTAL_ARRAY = 384
 
 
 import tracemalloc
@@ -35,16 +35,16 @@ def normalize(X_data, y_data):
 def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
     num_epochs = int(5e3)
     # num_steps = 1e5
-    eps = 1e-3
-    
-    batch_sizes = [16, 64, 256]
+    eps = 1e-6
+    batch_sizes = [2, 4, 16, 32]
 
-    depth_widths = [{'depth': 2, 'width': 8},
-                    {'depth': 2, 'width': 64},
+    depth_widths = [{'depth': 2, 'width': 2},
+                    {'depth': 2, 'width': 4},
+                    {'depth': 2, 'width': 8},
+                    {'depth': 2, 'width': 16},
+                    {'depth': 4, 'width': 4},
                     {'depth': 4, 'width': 8},
-                    {'depth': 4, 'width': 64},
-                    {'depth': 8, 'width': 8},
-                    {'depth': 8, 'width': 64}]
+                    {'depth': 4, 'width': 16}]
 
 
     optimizers = {"Adam": {"lr": [0.001, 0.0001, 1e-5], "momentum": [0.]}, "SGD": {"lr": [1e-2, 1e-3, 1e-4, 1e-5], "momentum": [0., 0.9]}}

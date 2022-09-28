@@ -67,7 +67,7 @@ class GModel():
                 kernel = "thin_plate_spline"
             rbf = RBFInterpolator(X_train, y_train, kernel=kernel, neighbors=int(float(tag_dict["neighbors"])), epsilon=epsilon)
             return rbf
-        else:
+        elif tag_dict["model"] == "nn":
             momentum = 0
             if "momentum" in tag_dict:
                 momentum = tag_dict["momentum"]
@@ -78,3 +78,9 @@ class GModel():
                                
             return lambda X: net(Tensor(X)).detach().numpy().ravel()
         
+        elif tag_dict["model"] == "lin":
+            assert self.dim <= 2
+            if self.dim == 1:
+                pass
+            else:
+                pass

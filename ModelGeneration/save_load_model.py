@@ -53,5 +53,5 @@ def fast_load_nn(func_name, dim, N, data_gen_name, depth, width, optimizer, lr, 
 def get_all_net_tags(func_name, dim, N, data_gen_method):
     path = HOME / "Models" / func_name / "dim_{}".format(dim) / "N_{}".format(N) / data_gen_method
     if not os.path.isdir(path):
-        return None
+        return []
     return os.listdir(path)

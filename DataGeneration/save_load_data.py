@@ -24,10 +24,11 @@ def save_files(f, dim, N, data_gen_method, data, file_names):
                 np.save(f, data[i])
         else:
             with open(path / (file_names[i] + ".json"), "w") as f:
-                json.dumps(data[i])
+                json.dump(data[i], f)
 
-def save_curv_reparam(data_x, data_y, func_name, N, config):
-    save_files(func_name, 1, N, "ReparamCurv", [np.array(data_x), np.array(data_y), config], ["X_data", "y_data", "config"])
+
+def save_curv_hess_reparam(data_x, data_y, func_name, N, reparam_type, use_norm, config):
+    save_files(func_name, 1, N, "Reparam_{}_useNorm_{}".format(reparam_type, use_norm), [np.array(data_x), np.array(data_y), config], ["X_data", "y_data", "config"])
 
 def save_mesh_simplification(data_x, data_y, func_name, N, config):
     save_files(func_name, 2, N, "MeshSimplify", [np.array(data_x), np.array(data_y), config], ["X_data", "y_data", "config"])
@@ -48,12 +49,12 @@ def load_fast(func_name, dim, N, data_gen_method):
     if not os.path.isdir(path):
         return None, None
 
-    to_load = None
-    for curr_gen_method in os.listdir(path):
-        if curr_gen_method.split("_")[0] == data_gen_method:
-            to_load = curr_gen_method
+    to_load = data_gen_method
+    # for curr_gen_method in os.listdir(path):
+    #     if curr_gen_method.split("_")[0] == data_gen_method:
+    #         to_load = curr_gen_method
 
-    if to_load is None:
+    if to_load not in os.listdir(path):
         return None, None
 
     with open(path / to_load / "X_data.npy", "rb") as f:
