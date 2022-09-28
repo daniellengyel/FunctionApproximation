@@ -84,18 +84,18 @@ def get_hess_sampling(funcs, dims, Ns, verbose=True):
                 save_sampling_hess(xs, ys, f, dim, N, config)
     
 
-def get_mesh_simplification(data_confs, N_high=500**2, threshold=0.1, verbose=True):
+def get_mesh_simplification(data_confs, N_high=100**2, threshold_prct=0.1, verbose=True):
     for data_conf in data_confs:
         if data_conf["dim"] == 1:
             continue
         print(data_conf)  
 
         F = get_func(data_conf["func_name"])
-        X_data = get_quadrics_points(F, N_high, data_conf["N"], threshold)
+        X_data = np.array(get_quadrics_points(F, N_high, data_conf["N"], threshold_prct)[0])
         y_data = F.f(X_data)
-        save_mesh_simplification(X_data, y_data, data_conf["func_name"], data_conf["N"], config={"N_high": N_high, "threshold": threshold})
+        save_mesh_simplification(X_data, y_data, data_conf["func_name"], data_conf["N"], config={"N_high": N_high, "threshold_prct": threshold_prct})
 
-def get_save_curv_reparam(data_confs, N_high=500, verbose=True):
+def get_save_curv_reparam(data_confs, N_high=100, verbose=True):
     for data_conf in data_confs:
         if data_conf["dim"] == 2:
             continue
@@ -110,7 +110,7 @@ def get_save_curv_reparam(data_confs, N_high=500, verbose=True):
 if __name__ == "__main__":
     funcs = ["Ackley", "Michi", "Dixon"]
     dims = [1, 2]
-    Ns_per_dim = [5, 10, 25, 50, 100, 250] # per dim
+    Ns_per_dim = [5, 10, 25, 50, 75] # per dim
 
     all_data_confs = generate_all_data_confs(funcs, dims, Ns_per_dim)
 
@@ -118,10 +118,10 @@ if __name__ == "__main__":
         get_uniform(all_data_confs, seed=0)
 
     elif ARRAY_INDEX == 1:
-        get_save_curv_reparam(all_data_confs, N_high=500, verbose=True)
+        get_save_curv_reparam(all_data_confs, N_high=100, verbose=True)
 
     elif ARRAY_INDEX == 2:
-        get_mesh_simplification(all_data_confs, N_high=500**2, threshold=0.1, verbose=True)
+        get_mesh_simplification(all_data_confs, N_high=100**2, threshold_prct=0.1, verbose=True)
 
 
 

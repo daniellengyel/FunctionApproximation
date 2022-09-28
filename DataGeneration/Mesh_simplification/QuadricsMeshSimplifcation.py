@@ -21,12 +21,14 @@ def create_boundary_edges(N):
     
     return boundary_edges
 
-def get_quadrics_points(F, N_init, N_final, threshold=0.1):
+def get_quadrics_points(F, N_init, N_final, threshold_prct=0.1):
     x_l, x_u = F.bounds[0]
     if len(F.bounds) == 1:
         y_l, y_u = x_l, x_u
     else:
         y_l, y_u = F.bounds[1]
+
+    threshold = (x_u - x_l) * threshold_prct # threshold_prct is the percentage of x_u - x_l we are willing to merge.  
 
     x = np.linspace(x_l, x_u, int(N_init**(1/2.)))
     y = np.linspace(y_l, y_u, int(N_init**(1/2.)))
@@ -62,7 +64,7 @@ def get_quadrics_points(F, N_init, N_final, threshold=0.1):
     # # Iteratively remove the pair (v1, v2) of least cost from the heap
     # # contract this pair, and update the costs of all valid pairs involving (v1, v2).
     # # until existing points = ratio * original points
-    model.iteratively_remove_least_cost_valid_pairs()
+    model.iteratively_remove_least_cost_valid_pairs(verbose=True)
 
     # # Generate the simplified 3d model (points/vertices, faces)
     model.generate_new_3d_model()
