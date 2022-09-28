@@ -11,12 +11,12 @@ sys.path.append(str(HOME / "ModelGeneration"))
 sys.path.append(str(HOME / "ModelComparison"))
 
 from torch import Tensor
-import jax.random as jrandom
 from scipy.interpolate import RBFInterpolator
-import jax.numpy as jnp
+import numpy as np
 
 from save_load_data import load_fast, get_all_data_configurations
 from save_load_model import fast_load_nn
+from save_load_comps import undo_model_tag
 
 
 class GModel():
@@ -58,11 +58,14 @@ class GModel():
         y_train = (y_train - (self._y_max + self._y_min)/2.) * 5. / ((self._y_max - self._y_min)/2.)
         
         if tag_dict["model"] == "rbf":
-            epsilon = 0.
+            epsilon = 1.
             if "epsilon" in tag_dict:
                 epsilon = tag_dict["epsilon"]
 
-            rbf = RBFInterpolator(X_train, y_train, kernel=tag_dict["rbf_kernel"], neighbors=int(tag_dict["neighbors"]), epsilon=epsilon)
+            kernel = tag_dict["kernel"]
+            if kernel == "thin":
+                kernel = "thin_plate_spline"
+            rbf = RBFInterpolator(X_train, y_train, kernel=kernel, neighbors=int(float(tag_dict["neighbors"])), epsilon=epsilon)
             return rbf
         else:
             momentum = 0
@@ -72,6 +75,6 @@ class GModel():
             net = fast_load_nn(self.func_name, self.dim, self.N, self.data_gen_method, 
                                tag_dict["depth"], tag_dict["width"], tag_dict["opt"], tag_dict["lr"], 
                                tag_dict["bs"], tag_dict["l2p"], )
-
+                               
             return lambda X: net(Tensor(X)).detach().numpy().ravel()
         

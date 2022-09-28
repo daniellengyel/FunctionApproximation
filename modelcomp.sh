@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -lselect=1:ncpus=1:mem=32gb
-#PBS -lwalltime=08:00:00
-#PBS -J 1-210
+#PBS -lwalltime=06:00:00
+#PBS -J 1-205
 
 export PATH=$HOME/miniconda3/bin/:$PATH
 export HOME=$HOME

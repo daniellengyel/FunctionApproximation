@@ -26,11 +26,11 @@ def save_files(f, dim, N, data_gen_method, data, file_names):
             with open(path / (file_names[i] + ".json"), "w") as f:
                 json.dumps(data[i])
 
-def save_reparam_curv(data_x, data_y, func_name, N_high, N_low):
-    save_files(func_name, 1, N_low, "ReparamCurv_N_high_{}".format(N_high), [np.array(data_x), np.array(data_y)], ["X_data", "y_data"])
+def save_curv_reparam(data_x, data_y, func_name, N, config):
+    save_files(func_name, 1, N, "ReparamCurv", [np.array(data_x), np.array(data_y), config], ["X_data", "y_data", "config"])
 
-def save_simplify_mesh(data_x, data_y, func_name, N_high, N_low):
-    save_files(func_name, 2, N_low, "MeshSimplify_N_high_{}".format(N_high), [np.array(data_x), np.array(data_y)], ["X_data", "y_data"])
+def save_mesh_simplification(data_x, data_y, func_name, N, config):
+    save_files(func_name, 2, N, "MeshSimplify", [np.array(data_x), np.array(data_y), config], ["X_data", "y_data", "config"])
 
 def save_uniform_sampling(data_x, data_y, func_name, dim, N, seed):
     save_files(func_name, dim, N, "UniformRandom", [np.array(data_x), np.array(data_y), {"seed": seed}], ["X_data", "y_data", "config"])

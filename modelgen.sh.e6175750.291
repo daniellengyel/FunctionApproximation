@@ -1,2 +1,0 @@
-/rds/general/user/dl2119/home/ICLR_Interp/ModelGeneration/nn_generation.py:30: RuntimeWarning: invalid value encountered in divide
-  y_data = (y_data - (y_max + y_min)/2.) * 5. / ((y_max - y_min)/2.)

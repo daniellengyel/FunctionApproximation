@@ -10,7 +10,7 @@ sys.path.append(str(HOME / "DataGeneration"))
 
 from save_load_data import load_fast, get_all_data_configurations
 from nn_train import train
-from save_load_model import save_nn
+from save_load_model import save_nn, get_nn_tag, get_all_net_tags
 
 if "PBS_ARRAY_INDEX" in os.environ:
     ARRAY_INDEX = int(os.environ["PBS_ARRAY_INDEX"]) - 1
@@ -33,8 +33,8 @@ def normalize(X_data, y_data):
 
 
 def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
-    # num_epochs = int(1e3)
-    num_steps = 1e5
+    num_epochs = int(5e3)
+    # num_steps = 1e5
     eps = 1e-3
     
     batch_sizes = [16, 64, 256]
@@ -51,22 +51,28 @@ def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
 
     weight_decays = [0, 1e-3, 1]
 
+    all_net_tags = get_all_net_tags(func_name, dim, N, data_gen_method)
+
     nn_num = 0
     for depth_width in depth_widths:
         for optimizer in optimizers:
             for batch_size in batch_sizes:
                 # How often will i see each elem is the number of epochs
-                num_epochs = (num_steps * batch_size)/N
-                num_epochs = max(num_epochs, 10) # want to see every data point at least 5-times
-                num_epochs = min(num_epochs, 1e3) # no more than 1k epochs
-                num_epochs = int(num_epochs)
+                # num_epochs = (num_steps * batch_size)/N
+                # num_epochs = max(num_epochs, 10) # want to see every data point at least 5-times
+                # num_epochs = min(num_epochs, 1e3) # no more than 1k epochs
+                # num_epochs = int(num_epochs)
                 for lr in optimizers[optimizer]["lr"]:
                     for momentum in optimizers[optimizer]["momentum"]:
                         for weight_decay in weight_decays:
                             if (nn_num % TOTAL_ARRAY) == ARRAY_INDEX:
-                                print("NN num", nn_num)
                                 depth = depth_width["depth"]
                                 width = depth_width["width"]
+                                net_tag = get_nn_tag(depth, width, optimizer, lr, batch_size, weight_decay, momentum)
+                                if net_tag in all_net_tags:
+                                    continue
+                                    
+                                print("NN num", nn_num)
                                 print(depth)
                                 print(width)
                                 print(lr)
@@ -85,36 +91,7 @@ def load_and_call(func, dim, N, data_gen_method):
     generate_nns(X_data, y_data, func, dim, N, data_gen_method)
 
 if __name__ == "__main__":
-    from collections import Counter
-    import linecache
-    import os
-    import tracemalloc
-    def display_top(snapshot, key_type='lineno', limit=3):
-        snapshot = snapshot.filter_traces((
-            tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
-            tracemalloc.Filter(False, "<unknown>"),
-        ))
-        top_stats = snapshot.statistics(key_type)
 
-        print("Top %s lines" % limit)
-        for index, stat in enumerate(top_stats[:limit], 1):
-            frame = stat.traceback[0]
-            # replace "/path/to/module/file.py" with "module/file.py"
-            filename = os.sep.join(frame.filename.split(os.sep)[-2:])
-            print("#%s: %s:%s: %.1f KiB"
-                % (index, filename, frame.lineno, stat.size / 1024))
-            line = linecache.getline(frame.filename, frame.lineno).strip()
-            if line:
-                print('    %s' % line)
-
-        other = top_stats[limit:]
-        if other:
-            size = sum(stat.size for stat in other)
-            print("%s other: %.1f KiB" % (len(other), size / 1024))
-        total = sum(stat.size for stat in top_stats)
-        print("Total allocated size: %.1f KiB" % (total / 1024))
-        
-    # tracemalloc.start()
 
     curr_exp_n = 0
 
@@ -130,8 +107,6 @@ if __name__ == "__main__":
         print("Exp N", curr_exp_n)
         # if (curr_exp_n % TOTAL_ARRAY) == ARRAY_INDEX:
         #     print("Generating...")
-        # snapshot = tracemalloc.take_snapshot()
-        # display_top(snapshot)
         
         # print()
         curr_exp_n += 1

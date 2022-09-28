@@ -23,6 +23,9 @@ def get_func(f):
     elif f == "Rosenbrock":
         return Rosenbrock()
 
+    elif f == "Dixon":
+        return Dixon()
+
     raise Exception("Function {} does not exist.".format(f))
 
 
@@ -92,13 +95,13 @@ class Schwefel():
 
 class Ackley():
     def __init__(self):
-        self.bounds = jnp.array([[-32.768, 32.768]])
+        self.bounds = jnp.array([[-5, 5]])
         self._f1 = jacfwd(lambda x: self.f(x.reshape(1, -1))[0])
         self._f2 = jacfwd(lambda x: self._f1(x.reshape(1, -1)))
 
-        self.a = 20
+        self.a = 10
         self.b = 0.2
-        self.c = 2 * jnp.pi
+        self.c = jnp.pi
 
     def f(self, X):
         square_mean = jnp.mean(X**2, axis=1)
@@ -170,7 +173,6 @@ class Rosenbrock():
         self.bounds = jnp.array([[-5, 10]])
         self._f1 = jacfwd(lambda x: self.f(x.reshape(1, -1))[0])
         self._f2 = jacfwd(lambda x: self._f1(x.reshape(1, -1)))
-        self.m = 2
 
     def f(self, X):
         diffs = X[:, 1:] - X[:, :-1]**2
@@ -197,5 +199,40 @@ class Rosenbrock():
             return val
         hess = fori_loop(0, X.shape[0], body_fun, hess)
         return hess
+
+class Dixon():
+    "Only for even dimensions"
+    def __init__(self):
+        self.bounds = jnp.array([[-5, 5]])
+        self._f1 = jacfwd(lambda x: self.f(x.reshape(1, -1))[0])
+        self._f2 = jacfwd(lambda x: self._f1(x.reshape(1, -1)))
+
+    def f(self, X):
+        diffs = (2*X[:, 1:]**2 - X[:, :-1])**2
+        return (X[:, 0] - 1)**2 + diffs @ jnp.array(list(range(2, X.shape[1] + 1)))
+        
+
+    @partial(jit, static_argnames=['self'])
+    def f1(self, X):
+        assert len(X.shape) == 2
+        grads = jnp.zeros(shape=X.shape)
+        def body_fun(i, val):
+            val = val.at[i].set(self._f1(X[i]))
+            return val
+        grads = fori_loop(0, X.shape[0], body_fun, grads)
+        return grads
+
+
+    @partial(jit, static_argnames=['self'])
+    def f2(self, X): 
+        assert len(X.shape) == 2
+        hess = jnp.zeros(shape=(X.shape[0], X.shape[1], X.shape[1]))
+        def body_fun(i, val):
+            val = val.at[i].set(self._f2(X[i])[0])
+            return val
+        hess = fori_loop(0, X.shape[0], body_fun, hess)
+        return hess
+
+           
 
            

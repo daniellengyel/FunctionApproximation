@@ -12,7 +12,7 @@ from Nets import SimpleNet
 
 def get_nn_tag(depth, width, optimizer, lr, batch_size, weight_decay, momentum=0):
     if optimizer == "SGD":
-        optimizer += "_{}".format(momentum)
+        optimizer += "_{}".format(float(momentum))
 
     nn_tag = "nn_depth_{}_width_{}_opt_{}_lr_{}_bs_{}_l2p_{}".format(depth, width, optimizer, lr, batch_size, weight_decay)
     return nn_tag
@@ -38,7 +38,6 @@ def fast_load_nn(func_name, dim, N, data_gen_name, depth, width, optimizer, lr, 
 
     dir_name = get_nn_tag(depth, width, optimizer, lr, batch_size, weight_decay, momentum)
     path = path / dir_name
-    
     if not path.is_dir():
         return None
 
