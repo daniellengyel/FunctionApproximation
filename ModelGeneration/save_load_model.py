@@ -4,9 +4,11 @@ import json
 import os 
 import sys
 from pathlib import Path
-HOME = Path(os.environ["PATH_INTP_FOLDER"])
+HOME = Path("/rds/general/user/dl2119/home/ICLR_Interp") #os.environ["PATH_INTP_FOLDER"])
 
 from pathlib import Path
+
+import shutil
 
 from Nets import SimpleNet
 
@@ -55,3 +57,19 @@ def get_all_net_tags(func_name, dim, N, data_gen_method):
     if not os.path.isdir(path):
         return []
     return os.listdir(path)
+
+
+if __name__ == "__main__":
+    path = HOME / "Models"
+
+    res = []
+    for func in os.listdir(path):
+        for dim_dir in os.listdir(path / func):
+            for N_dir in os.listdir(path / func / dim_dir):
+                dim = int(dim_dir.split("_")[1])
+                N = int(N_dir.split("_")[1])
+                for data_gen_method in os.listdir(path / func / dim_dir / N_dir):
+                    # res.append({"func_name": func, "dim": dim, "N": N, "data_gen_method": data_gen_method})
+                    if "Reparam" in data_gen_method:
+                        print("rm")
+                        shutil.rmtree(str(path / func / dim_dir / N_dir / data_gen_method))

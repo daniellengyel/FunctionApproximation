@@ -39,13 +39,15 @@ def undo_model_tag(tag):
     if tag_split[0] == "nn":
         i = 1
         res["model"] = "nn"
-    else:
+    elif tag_split[0] == "rbf":
         res["model"] = "rbf"
         res["kernel"] = tag_split[1]
         if tag_split[1] == "thin":
             i = 4
         else:
             i = 2
+    else:
+        return {"model": "linear"}
 
     while i < len(tag_split):
         if tag_split[i] == "opt" and tag_split[i + 1] == "SGD":

@@ -25,26 +25,41 @@ def get_func(f):
 
     elif f == "Dixon":
         return Dixon()
+    
+    elif f == "Rasti":
+        return Rasti()
 
     raise Exception("Function {} does not exist.".format(f))
 
 
-class Rastigrin():
+class Rasti():
     def __init__(self):
         self.freq = 4*jnp.pi
-        self.bounds = jnp.array([[-2, 2]])
-        self._f2 = jacfwd(self.f1)
+        self.bounds = jnp.array([[-2.5, 2.5]])
+        self._f1 = jacfwd(lambda x: self.f(x.reshape(1, -1))[0])
+        self._f2 = jacfwd(lambda x: self._f1(x.reshape(1, -1)))
 
     def f(self, X):
         """X.shape = (N, dim)"""
         # if len(X.shape) == 1:
         #     X = X.reshape(1, -1)
-        return jnp.sum(jnp.sin(X*self.freq), axis=1) + jnp.diag(X @ X.T)
+        # return jnp.sum(jnp.sin(X*self.freq), axis=1) + jnp.diag(X @ X.T)
+        return  -25*jnp.exp(-jnp.linalg.norm(X, axis=1)**2 / 1.5) - 10*jnp.exp(-jnp.linalg.norm(X, axis=1)**2 / 0.5) + 10 * X.shape[1] + jnp.sum( - 10 * jnp.cos(2*jnp.pi*X), axis=1)
 
+    # def f1(self, X):
+    #     # if len(X.shape) == 1:
+    #     #     X = X.reshape(1, -1)
+    #     return jnp.cos(X*self.freq) * self.freq + 2 * X
+
+    @partial(jit, static_argnames=['self'])
     def f1(self, X):
-        # if len(X.shape) == 1:
-        #     X = X.reshape(1, -1)
-        return jnp.cos(X*self.freq) * self.freq + 2 * X
+        assert len(X.shape) == 2
+        grads = jnp.zeros(shape=X.shape)
+        def body_fun(i, val):
+            val = val.at[i].set(self._f1(X[i]))
+            return val
+        grads = fori_loop(0, X.shape[0], body_fun, grads)
+        return grads
 
     @partial(jit, static_argnames=['self'])
     def f2(self, X): 

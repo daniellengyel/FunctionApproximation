@@ -33,10 +33,10 @@ def normalize(X_data, y_data):
 
 
 def generate_nns(X_train, y_train, func_name, dim, N, data_gen_name):
-    num_epochs = int(5e3)
+    num_epochs = int(500)
     # num_steps = 1e5
     eps = 1e-6
-    batch_sizes = [2, 4, 16, 32]
+    batch_sizes = [4, 16, 64]
 
     depth_widths = [{'depth': 2, 'width': 2},
                     {'depth': 2, 'width': 4},

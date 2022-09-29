@@ -9,9 +9,11 @@ def k_l(F, x, reparm_type="curv", use_norm=True):
         c = np.linalg.norm(np.array([1, F.f1(x).reshape(-1)[0]]))
 
     if reparm_type == "curv":
-        return np.abs(F.f2(x)/((1 + F.f1(x)**2)**(3/2.))) * c
+        ret = np.abs(F.f2(x)/((1 + F.f1(x)**2)**(3/2.))) * c
+        return ret
     else:   
-        return np.abs(F.f2(x)) * c
+        ret = np.abs(F.f2(x)) * c
+        return ret
 
 def curv_hess_parmetrization(F, N_high, reparm_type="curv", use_norm=True):
     res = []
@@ -25,7 +27,7 @@ def curv_hess_parmetrization(F, N_high, reparm_type="curv", use_norm=True):
         else:
             res.append(res[-1] + curr)
    
-    return np.array(res).ravel()
+    return np.array(res).ravel() / np.max(res)
 
 def invert_param(F, curv_pts, N_high, N_low):
     x_l, x_u = F.bounds[0]

@@ -26,7 +26,7 @@ from CurvatureReparam import get_curv_hess_reparam
 if "PBS_ARRAY_INDEX" in os.environ:
     ARRAY_INDEX = int(os.environ["PBS_ARRAY_INDEX"]) - 1
 else:
-    ARRAY_INDEX = 2
+    ARRAY_INDEX = 1
 
 def generate_all_data_confs(funcs, dims, Ns_per_dim):
     res = []
@@ -102,15 +102,15 @@ def get_save_curv_hess_reparam(data_confs, N_high=100, verbose=True):
 
         F = get_func(data_conf["func_name"])
 
-        for reparm_type in ["curv", "hess"]:
-            for use_norm in [True, False]:
+        for reparm_type in ["curv"]: #["curv", "hess"]:
+            for use_norm in [True]: #[True, False]:
                 X_data = get_curv_hess_reparam(F, N_high, data_conf["N"], reparm_type=reparm_type, use_norm=use_norm).reshape(-1, 1)
                 y_data = F.f(X_data)
                 save_curv_hess_reparam(X_data, y_data, data_conf["func_name"], data_conf["N"], reparam_type=reparm_type, use_norm=use_norm, config={"N_high": N_high})
 
 
 if __name__ == "__main__":
-    funcs = ["Ackley", "Michi", "Dixon"]
+    funcs = ["Rasti", "Michi", "Dixon"]
     dims = [1, 2]
     Ns_per_dim = [4, 6, 8, 10, 12, 16, 20, 40] # per dim
 
@@ -120,7 +120,7 @@ if __name__ == "__main__":
         get_uniform(all_data_confs, seed=0)
 
     elif ARRAY_INDEX == 1:
-        get_save_curv_hess_reparam(all_data_confs, N_high=100, verbose=True)
+        get_save_curv_hess_reparam(all_data_confs, N_high=1000, verbose=True)
 
     # elif ARRAY_INDEX == 2:
     #     get_mesh_simplification(all_data_confs, N_high=100**2, threshold_prct=0.01, verbose=True)

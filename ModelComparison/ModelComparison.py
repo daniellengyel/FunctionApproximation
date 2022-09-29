@@ -52,14 +52,14 @@ def get_rbf_tags():
 def compute_loss(model, X_train, y_train, X_test, y_test):
 
     test_out = model.f(X_test)
-    test_errs = (y_test - test_out)**2
+    test_errs = (y_test.flatten() - test_out.flatten())**2
     test_mean_err = np.mean(test_errs)
 
     res = {"test_errs": test_errs.tolist(), "test_mean_err": float(test_mean_err)}
 
     if model.tag_dict['model'] == "nn":
         train_out = model.f(X_train)
-        train_errs = (y_train - train_out)**2
+        train_errs = (y_train.flatten() - train_out.flatten())**2
         train_mean_err = np.mean(train_errs)
         res["train_errs"] = train_errs.tolist()
         res["train_mean_err"] = float(train_mean_err)
@@ -82,6 +82,14 @@ def nn_loss(func_name, dim, N, data_gen_method, X_train, y_train, X_test, y_test
     for model_tag in get_all_net_tags(func_name, dim, N, data_gen_method):
         net_model = GModel(func_name, dim, N, data_gen_method, model_tag)
         res[model_tag] = compute_loss(net_model, X_train, y_train, X_test, y_test)
+    return res
+
+def linear_loss(func_name, dim, N, data_gen_method, X_train, y_train, X_test, y_test):
+    res = {}
+
+    tag = "linear"
+    model = GModel(func_name, dim, N, data_gen_method, tag)
+    res[tag] = compute_loss(model, X_train, y_train, X_test, y_test)
     return res
 
 if __name__ == "__main__":
@@ -110,8 +118,10 @@ if __name__ == "__main__":
             
             nn_comps = nn_loss(func_name, dim, N, data_gen_method, X_train, y_train, X_test, y_test)
             rbf_comps = rbf_loss(func_name, dim, N, data_gen_method, X_train, y_train, X_test, y_test)
+            linear_comps = linear_loss(func_name, dim, N, data_gen_method, X_train, y_train, X_test, y_test)
 
             save_comps(nn_comps, N_test, seed_test, dim, N, func_name, data_gen_method)
             save_comps(rbf_comps, N_test, seed_test, dim, N, func_name, data_gen_method)
+            save_comps(linear_comps, N_test, seed_test, dim, N, func_name, data_gen_method)
 
         curr_exp_n += 1

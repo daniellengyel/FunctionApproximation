@@ -9,14 +9,17 @@ sys.path.append(str(HOME))
 sys.path.append(str(HOME / "DataGeneration"))
 sys.path.append(str(HOME / "ModelGeneration"))
 sys.path.append(str(HOME / "ModelComparison"))
+sys.path.append(str(HOME / "DelaunaySparse"))
+
 
 from torch import Tensor
-from scipy.interpolate import RBFInterpolator
+from scipy.interpolate import RBFInterpolator, interp1d
 import numpy as np
 
 from save_load_data import load_fast, get_all_data_configurations
 from save_load_model import fast_load_nn
 from save_load_comps import undo_model_tag
+from DelaunaySparse.delsparse import delaunay_approx
 
 
 class GModel():
@@ -78,9 +81,9 @@ class GModel():
                                
             return lambda X: net(Tensor(X)).detach().numpy().ravel()
         
-        elif tag_dict["model"] == "lin":
+        elif tag_dict["model"] == "linear":
             assert self.dim <= 2
             if self.dim == 1:
-                pass
+                return interp1d(X_train.ravel(), y_train, fill_value="extrapolate")
             else:
-                pass
+                return lambda X: delaunay_approx(X, X_train, y_train)
