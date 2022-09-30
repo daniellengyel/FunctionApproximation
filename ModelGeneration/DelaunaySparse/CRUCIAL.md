@@ -1,0 +1,1 @@
+To make this work, we need to create the .so file by ipmorting the delsparse.py module and letting the code run in a terminal, not in the notebook!
